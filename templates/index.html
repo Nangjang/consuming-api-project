@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search IPL Data</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 320px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 5px;
+            font-weight: bold;
+        }
+
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        select {
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select Team1 & Team2 To Compare</h2>
+
+    <form action="#" method="get">
+
+        <label for="team1">Team1</label>
+        <select id="team1" name="team1">
+            {% if teams %}
+                {% for team in teams %}
+                    <option>{{ team }}</option>
+                {% endfor %}
+            {% else %}
+                <option>-- No Data Available --</option>
+            {% endif %}
+        </select>
+
+        <label for="team2">Team2</label>
+        <select id="team2" name="team2">
+            {% if teams %}
+                {% for team in teams %}
+                    <option>{{ team }}</option>
+                {% endfor %}
+            {% else %}
+                <option>-- No Data Available --</option>
+            {% endif %}
+        </select>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+</body>
+</html>
