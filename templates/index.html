@@ -62,40 +62,75 @@
         button:hover {
             background: #0056b3;
         }
+
+        .info p {
+            margin: 8px 0;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 4px 0;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Select Team1 & Team2 To Compare</h2>
+    {% if not teamvsteam %}
+        <h2>Select Team1 & Team2 To Compare</h2>
 
-    <form action="#" method="get">
+        <form action="/teamvsteam" method="get">
 
-        <label for="team1">Team1</label>
-        <select id="team1" name="team1">
-            {% if teams %}
-                {% for team in teams %}
-                    <option>{{ team }}</option>
-                {% endfor %}
-            {% else %}
-                <option>-- No Data Available --</option>
-            {% endif %}
-        </select>
+            <label for="team1">Team1</label>
+            <select id="team1" name="team1">
+                {% if teams %}
+                    {% for team in teams %}
+                        <option>{{ team }}</option>
+                    {% endfor %}
+                {% else %}
+                    <option>-- No Data Available --</option>
+                {% endif %}
+            </select>
 
-        <label for="team2">Team2</label>
-        <select id="team2" name="team2">
-            {% if teams %}
-                {% for team in teams %}
-                    <option>{{ team }}</option>
-                {% endfor %}
-            {% else %}
-                <option>-- No Data Available --</option>
-            {% endif %}
-        </select>
+            <label for="team2">Team2</label>
+            <select id="team2" name="team2">
+                {% if teams %}
+                    {% for team in teams %}
+                        <option>{{ team }}</option>
+                    {% endfor %}
+                {% else %}
+                    <option>-- No Data Available --</option>
+                {% endif %}
+            </select>
 
-        <button type="submit">Submit</button>
+            <button type="submit">Submit</button>
 
-    </form>
+        </form>
+    {% endif %}
+
+    {% if teamvsteam %}
+        <h2>Match Statistics</h2>
+
+        <div class="info">
+            <p><strong>Team 1:</strong> {{ teamvsteam['Team1'] }}</p>
+            <p><strong>Wins:</strong> {{ teamvsteam['Team1 win count'] }}</p>
+
+            <p><strong>Team 2:</strong> {{ teamvsteam['Team2'] }}</p>
+            <p><strong>Wins:</strong> {{ teamvsteam['Team2 win count'] }}</p>
+        </div>
+
+        <h3>Player of the Match Winners</h3>
+
+        <ul>
+        {% for player in teamvsteam['Player of Match'] %}
+            <li>{{ player }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 </div>
 
 </body>
