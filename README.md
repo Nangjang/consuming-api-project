@@ -19,12 +19,11 @@ A simple Flask application that consumes an IPL API and provides features such a
 ## Run
 
 ```bash
-pip install -r requirements.txt
 python app.py
 ```
 
 Open:
 
 ```
-http://localhost:6000
+http://localhost:7000
 ```
